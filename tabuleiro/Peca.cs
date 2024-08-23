@@ -7,20 +7,18 @@ namespace tabuleiro
     {
         // Atributos de classe
         public Posicao posicao{ get; set; }
-        public Cor cor{ get; protected set; }
-        public int qntMovimento{ get; protected set; }
-        public Tabuleiro tabuleiro{ get; set; }
+        public Cor cor { get; protected set; }
+        public int qntMovimentos{ get; protected set; }
+        public Tabuleiro tabuleiro{ get; protected set; }
 
 
         // Construtor
-        public Peca(Posicao posicao, Cor cor, Tabuleiro tabuleiro)
+        public Peca(Tabuleiro tabuleiro, Cor cor)
         {
-            this.posicao = posicao;
+            this.posicao = null;
             this.cor = cor;
             this.tabuleiro = tabuleiro;
-            this.qntMovimento = 0;
+            this.qntMovimentos = 0;
         }
-
-
     }
 }
