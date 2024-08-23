@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tabuleiro;
 
 namespace XadrezConsole
 {
@@ -11,7 +12,9 @@ namespace XadrezConsole
         static void Main(string[] args)
         {
 
+            Console.WriteLine("          <<<<< Programado por JulianoMarthins >>>>>z\n");
 
+            Tabuleiro tab = new Tabuleiro(8, 8);
 
         }
     }
