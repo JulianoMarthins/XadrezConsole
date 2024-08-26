@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using XadrezConsole.tabuleiro;
 
 namespace tabuleiro
 {
@@ -10,6 +11,7 @@ namespace tabuleiro
         private Peca[,] pecas;
 
 
+
         // Construtor
         public Tabuleiro(int linhas, int colunas)
         {
@@ -19,23 +21,51 @@ namespace tabuleiro
         }
 
 
+
         // Metódos de classe
         public Peca Peca(int linha, int coluna)
-        {
-            // Método retorna o valor contido na mitriz privado de peças.
+        {            
             return pecas[linha, coluna];
         }
 
+        public Peca peca(Posicao pos)
+        {
+            return pecas[pos.linha, pos.coluna];
+        }
+         
+        public bool existePeca(Posicao pos)
+        {
+            validarPosicao(pos);
+            return peca(pos) != null;
+        }
+
+
         public void ColocarPeca(Peca p, Posicao pos)
-        {   
-            // Método adiciona uma peça em posição específica do matriz de peças, 
+        {               
+            if (existePeca(pos))
+            {
+                throw new TabuleiroException("Já existe uma peça nesta posição");
+            }
+
             this.pecas[pos.linha, pos.coluna] = p;
             p.posicao = pos;
         }
 
+        public bool PosicaoValida(Posicao pos)
+        {
+            if(pos.linha < 0 || pos.linha >= this.linhas || pos.coluna < 0 || pos.coluna >= this.colunas)
+            {
+                return false;
+            }
+            return true;
+        }
 
-
-
-
+        public void validarPosicao(Posicao pos)
+        {
+            if (!PosicaoValida(pos))
+            {
+                throw new TabuleiroException("Posição inválida");
+            }
+        }
     }
 }
